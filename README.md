@@ -1,2 +1,2 @@
 # -Snake-Game
-Contains files for the snake game.
+Contains all the files needed for the snake game to function properly.
