@@ -1,9 +1,7 @@
 class Script:
     """A collection of actions.
-
     The responsibility of Script is to keep track of a collection of actions. It has methods for 
     adding, removing and getting them by a group name.
-
     Attributes:
         _actions (dict): A dictionary of actions { key: group_name, value: a list of actions }
     """
@@ -30,7 +28,6 @@ class Script:
         
         Args:
             group (string): The name of the group.
-
         Returns:
             List: The actions in the group.
         """
@@ -38,6 +35,20 @@ class Script:
         if group in self._actions.keys():
             results = self._actions[group].copy()
         return results
+    
+    def get_end(self, group):
+            """Gets the first actor in the given group.
+        
+        Args:
+            group (string): The name of the group.
+            
+        Returns:
+            List: The first actor in the group.
+        """
+            result = None
+            if group in self._actions.keys():
+                result = self._actions[group][-1]
+                return result
     
     def remove_action(self, group, action):
         """Removes an action from the given group.

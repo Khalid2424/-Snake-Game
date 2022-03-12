@@ -2,7 +2,6 @@ class Director:
     """A person who directs the game. 
     
     The responsibility of a Director is to control the sequence of play.
-
     Attributes:
         _video_service (VideoService): For providing video output.
     """
@@ -17,7 +16,6 @@ class Director:
         
     def start_game(self, cast, script):
         """Starts the game using the given cast and script. Runs the main game loop.
-
         Args:
             cast (Cast): The cast of actors.
             script (Script): The script of actions.
@@ -39,4 +37,4 @@ class Director:
         """
         actions = script.get_actions(group)    
         for action in actions:
-            action.execute(cast, script)          
+            action.execute(cast, script)                  

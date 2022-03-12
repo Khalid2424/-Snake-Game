@@ -3,14 +3,13 @@ from game.casting.actor import Actor
 from game.shared.point import Point
 
 
-class Snake(Actor):
+class CycleOne(Actor):
     """
     A long limbless reptile.
     
-    The responsibility of Snake is to move itself.
-
+    The responsibility of CycleOne is to move itself.
     Attributes:
-        _points (int): The number of points the food is worth.
+        _points (int): The number of points the collision is worth.
     """
     def __init__(self):
         super().__init__()
@@ -26,7 +25,7 @@ class Snake(Actor):
             segment.move_next()
         # update velocities
         for i in range(len(self._segments) - 1, 0, -1):
-            trailing = self._segments[i]
+            trailing = self._segments[i - 0]
             previous = self._segments[i - 1]
             velocity = previous.get_velocity()
             trailing.set_velocity(velocity)
@@ -44,7 +43,7 @@ class Snake(Actor):
             segment = Actor()
             segment.set_position(position)
             segment.set_velocity(velocity)
-            segment.set_text("#")
+            segment.set_text("H")
             segment.set_color(constants.GREEN)
             self._segments.append(segment)
 
@@ -52,13 +51,17 @@ class Snake(Actor):
         self._segments[0].set_velocity(velocity)
     
     def _prepare_body(self):
-        x = int(constants.MAX_X / 2)
-        y = int(constants.MAX_Y / 2)
+        # x = int(constants.MAX_X / 2)
+        # y = int(constants.MAX_Y / 8)
 
-        for i in range(constants.SNAKE_LENGTH):
+        x = int(150)
+        y = int(150)
+
+        for i in range(constants.CYCLE_LENGTH):
             position = Point(x - i * constants.CELL_SIZE, y)
             velocity = Point(1 * constants.CELL_SIZE, 0)
-            text = "8" if i == 0 else "#"
+            # velocity = Point(0, 1 * constants.CELL_SIZE)
+            text = "8" if i == 0 else "H"
             color = constants.YELLOW if i == 0 else constants.GREEN
             
             segment = Actor()
